@@ -3,11 +3,35 @@ class Player {
         this.x = x;
         this.y = y;
 
+        //physics
+        this.speed = 2;
+
         // appearence
         this.size = 10;
         this.turretLength = 20;
         this.primColour = window.palette.autumn.kobe;
         this.secColour = window.palette.autumn.richBlack;
+    }
+
+    update() {
+
+        // get vector to mouse
+        let dx = window.mouse.x - this.x;
+        let dy = window.mouse.y - this.y;
+        let mag = Math.sqrt((dx * dx) + (dy * dy));
+
+        //normalise vector
+        dx /= mag;
+        dy /= mag;
+
+        // scale vector to speed
+        dx *= this.speed;
+        dy *= this.speed;
+
+        // apply change
+        this.x += dx;
+        this.y += dy;
+
     }
 
     draw() {

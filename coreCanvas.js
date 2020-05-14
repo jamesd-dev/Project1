@@ -42,6 +42,7 @@ function drawLoop() {
     requestAnimationFrame(drawLoop);
     clearScreen(window.palette.autumn.brownSugar);
     window.offset.apply();
+    window.player.update();
     window.player.draw();
     playParticles();
 }
